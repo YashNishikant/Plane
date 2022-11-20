@@ -19,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
     public float boundsBOTTOM;
     public float scaledownrotation;
     public Camera c;
-    public GameObject propellor;
     bool end;
     bool timelock = false;
     float newtime;
@@ -73,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             velocityupward += increaseupward * Time.deltaTime;
+            Debug.Log(increaseupward * Time.deltaTime);
                 rotateY = velocityupward / scaledownrotation;
             
             hitwall2 = false;
@@ -140,7 +140,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         transform.rotation = Quaternion.Euler(new Vector3(rotateY * -10, 0, rotate * -10));
-        propellor.transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotateprop));
         transform.position += new Vector3(velocity, velocityupward, 0) * Time.deltaTime;
     }
 

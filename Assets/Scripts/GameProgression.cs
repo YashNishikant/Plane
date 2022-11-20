@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameProgression : MonoBehaviour
 {
@@ -8,9 +9,10 @@ public class GameProgression : MonoBehaviour
     public float gradualinc;
     int x = 1;
     public int increasedelay = 1000;
+    float time = 0;
 
-    void Update()
-    {
+    void Update() { 
+
         x++;
 
         if (x % increasedelay == 0) {

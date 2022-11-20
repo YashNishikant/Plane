@@ -6,7 +6,6 @@ public class blocks : MonoBehaviour
 {
     List<GameObject> obs = new List<GameObject>();
     public GameObject obstacle;
-    public GameObject collect;
     public float blockspeed;
     int spawntime = 50;
     int x;
@@ -40,13 +39,6 @@ public class blocks : MonoBehaviour
             n.transform.rotation = Quaternion.Euler(new Vector3(Random.Range(-15,15), Random.Range(0,360), Random.Range(-15, 15)));
             n.transform.localScale = new Vector3(Random.Range(2,5), Random.Range(2, 5), Random.Range(2, 5));
             obs.Add(n);
-    }
-
-    void type1obs(float z) {
-        GameObject n;
-        n = Instantiate(collect) as GameObject;
-        n.transform.position = new Vector3(Random.Range(-70,70), Random.Range(-100, 100), z);
-        obs.Add(n);
     }
 
     void type2obs(float z)
