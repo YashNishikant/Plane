@@ -6,10 +6,14 @@ using UnityEngine.UI;
 public class GameProgression : MonoBehaviour
 {
 
-    public float gradualinc;
+    float gradualinc;
     int x = 1;
-    public int increasedelay = 1000;
-    float time = 0;
+    int increasedelay = 1000;
+
+    void Start()
+    {
+        gradualinc = 1.1f;    
+    }
 
     void Update() { 
 

@@ -1,11 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class TimeScript : MonoBehaviour
+public class timingscript : MonoBehaviour
 {
-
     [SerializeField] private GameObject t;
     float time;
 

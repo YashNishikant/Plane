@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     bool timelock = false;
     float newtime;
     float time = 0;
+    [SerializeField] private List<ParticleSystem> particles = new List<ParticleSystem>();
+    [SerializeField] private ParticleSystem explosion;
 
     private void Start()
     {
@@ -72,7 +74,6 @@ public class PlayerMovement : MonoBehaviour
             }
 
             velocityupward += increaseupward * Time.deltaTime;
-            Debug.Log(increaseupward * Time.deltaTime);
                 rotateY = velocityupward / scaledownrotation;
             
             hitwall2 = false;
@@ -168,7 +169,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void increasespeed(float inc) {
-        if(increase < 70) {     
+        if(increase < 70) {
+
             increase *= inc;
             increaseupward *= inc;
             scaledownrotation *= inc;
@@ -189,7 +191,20 @@ public class PlayerMovement : MonoBehaviour
             GetComponent<Rigidbody>().useGravity = true;
             transform.GetComponent<Rigidbody>().AddForce(Random.Range(10000, 20000) * Time.deltaTime, Random.Range(10000, 20000) * Time.deltaTime, 30000*Time.deltaTime);
             collision.transform.GetComponent<Rigidbody>().AddForce(0, 0, 10000 * Time.deltaTime);
+
+            for (int i = 0; i < collision.contactCount; i++) {
+                ParticleSystem e = Instantiate(explosion, collision.GetContact(i).point, Quaternion.identity);
+                e.Play();
+            }
+
+            foreach (ParticleSystem p in particles) {
+                p.Stop();
+            }
+            
             end = true;
+
+            Destroy(collision.gameObject);
+
         }
     }
 

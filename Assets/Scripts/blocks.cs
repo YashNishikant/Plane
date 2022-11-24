@@ -33,12 +33,13 @@ public class blocks : MonoBehaviour
     }
 
     void obsgenerate() {
-            GameObject n;
-            n = Instantiate(obstacle) as GameObject;
-            n.transform.position = new Vector3(Random.Range(-20, 20), Random.Range(-8, 10), 100);
-            n.transform.rotation = Quaternion.Euler(new Vector3(Random.Range(-15,15), Random.Range(0,360), Random.Range(-15, 15)));
-            n.transform.localScale = new Vector3(Random.Range(2,5), Random.Range(2, 5), Random.Range(2, 5));
-            obs.Add(n);
+        GameObject n;
+        n = Instantiate(obstacle) as GameObject;
+        n.transform.position = new Vector3(Random.Range(-20, 20), Random.Range(-8, 10), 100);
+        n.transform.rotation = Quaternion.Euler(new Vector3(Random.Range(-15,15), Random.Range(0,360), Random.Range(-15, 15)));
+        n.transform.localScale = new Vector3(Random.Range(2,5), Random.Range(2, 5), Random.Range(2, 5));
+        n.transform.GetChild(0).GetComponent<Animation>().Play();
+        obs.Add(n);
     }
 
     void type2obs(float z)
@@ -62,9 +63,9 @@ public class blocks : MonoBehaviour
             blockspeed *= inc;
         }
         if(spawntime > 10)
-        spawntime -= 10;
+        spawntime -= 3;
 
-        if (spawntime <= 0) {
+        if (spawntime <= 10) {
             spawntime = 10;
         }
     }
